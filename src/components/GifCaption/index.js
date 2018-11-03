@@ -14,7 +14,7 @@ export default class GifCaption extends Component {
 
   getRandomGif() {
     return fetch(
-      `http://api.giphy.com/v1/gifs/random?api_key=2C40RpauBXJXFyrVrwNjjFSGGHlVVObw&rating=pg-13`
+      `https://api.giphy.com/v1/gifs/random?api_key=2C40RpauBXJXFyrVrwNjjFSGGHlVVObw&rating=pg-13`
     )
       .then(resp => resp.json())
       .then(response => {
