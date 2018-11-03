@@ -1,52 +1,31 @@
 /* Api methods to call /functions */
 
-const create = (data) => {
-  return fetch('/.netlify/functions/todos-create', {
+const create = data => {
+  return fetch("/.netlify/functions/gifs-create", {
     body: JSON.stringify(data),
-    method: 'POST'
+    method: "POST"
   }).then(response => {
-    return response.json()
-  })
-}
+    return response.json();
+  });
+};
 
 const readAll = () => {
-  return fetch('/.netlify/functions/todos-read-all').then((response) => {
-    return response.json()
-  })
-}
+  return fetch("/.netlify/functions/gifs-read-all").then(response => {
+    return response.json();
+  });
+};
 
-const update = (todoId, data) => {
-  return fetch(`/.netlify/functions/todos-update/${todoId}`, {
+const update = (gifId, data) => {
+  return fetch(`/.netlify/functions/gifs-update/${gifId}`, {
     body: JSON.stringify(data),
-    method: 'POST'
+    method: "POST"
   }).then(response => {
-    return response.json()
-  })
-}
-
-const deleteTodo = (todoId) => {
-  return fetch(`/.netlify/functions/todos-delete/${todoId}`, {
-    method: 'POST',
-  }).then(response => {
-    return response.json()
-  })
-}
-
-const batchDeleteTodo = (todoIds) => {
-  return fetch(`/.netlify/functions/todos-delete-batch`, {
-    body: JSON.stringify({
-      ids: todoIds
-    }),
-    method: 'POST'
-  }).then(response => {
-    return response.json()
-  })
-}
+    return response.json();
+  });
+};
 
 export default {
   create: create,
   readAll: readAll,
-  update: update,
-  delete: deleteTodo,
-  batchDelete: batchDeleteTodo
-}
+  update: update
+};
