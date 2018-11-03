@@ -1,0 +1,23 @@
+.gif-caption {
+  background: #2a2a2a;
+  color: #fff;
+  padding: 2rem;
+}
+
+.gif-caption__gif {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+}
+
+.gif-caption__form {
+  margin: 1rem auto 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.gif-caption__caption {
+  width: 75%;
+}
