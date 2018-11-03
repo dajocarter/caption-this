@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import "./index.css";
 
 export default class GifCaption extends Component {
@@ -42,9 +42,9 @@ export default class GifCaption extends Component {
     const { gifId, caption } = this.state;
     const isInvalid = caption === "";
     return (
-      <div className="gif-caption">
+      <Fragment>
         {gifId && (
-          <>
+          <div className="gif-caption">
             <img
               src={`https://media1.giphy.com/media/${gifId}/giphy.gif`}
               alt=""
@@ -66,9 +66,9 @@ export default class GifCaption extends Component {
                 Submit
               </button>
             </form>
-          </>
+          </div>
         )}
-      </div>
+      </Fragment>
     );
   }
 }
