@@ -18,7 +18,7 @@ if (insideNetlify) {
   createFaunaDB(process.env.FAUNADB_SERVER_SECRET).then(() => {
     console.log("Database created");
   });
-} else {
+} else if (!process.env.FAUNADB_SERVER_SECRET) {
   console.log();
   console.log(
     "You can create fauna DB keys here: https://dashboard.fauna.com/db/keys"
@@ -36,6 +36,10 @@ if (insideNetlify) {
       console.log("Database created");
     });
   });
+} else {
+  createFaunaDB(process.env.FAUNADB_SERVER_SECRET).then(() => {
+    console.log("Database created");
+  });
 }
 
 /* idempotent operation */
@@ -47,12 +51,12 @@ function createFaunaDB(key) {
 
   /* Based on your requirements, change the schema here */
   return client
-    .query(q.Create(q.Ref("classes"), { name: "todos" }))
+    .query(q.Create(q.Ref("classes"), { name: "gifs" }))
     .then(() => {
       return client.query(
         q.Create(q.Ref("indexes"), {
-          name: "all_todos",
-          source: q.Ref("classes/todos")
+          name: "all_gifs",
+          source: q.Ref("classes/gifs")
         })
       );
     })
