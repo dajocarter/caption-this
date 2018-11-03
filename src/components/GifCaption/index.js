@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import api from "../../utils/api";
 import "./index.css";
 
 export default class GifCaption extends Component {
@@ -32,9 +33,19 @@ export default class GifCaption extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    // Form gif data
     const { gifId, caption } = this.state;
-    console.log(`GIF ID: `, gifId);
-    console.log("CAPTION: ", caption);
+    const gifData = { gifId, caption, timestamp: new Date().getTime() * 10000 };
+    // Use API to save gif in database
+    api
+      .create(gifData)
+      .then(response => {
+        console.log(response);
+      })
+      .catch(err => {
+        console.log("An API error occurred", err);
+      });
+    // Show a new gif
     this.getRandomGif();
   }
 
