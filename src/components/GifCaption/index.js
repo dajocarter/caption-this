@@ -59,27 +59,39 @@ export default class GifCaption extends Component {
     return (
       <Fragment>
         {gifId && (
-          <div className="gif-caption">
-            <img
-              src={`https://media1.giphy.com/media/${gifId}/giphy.gif`}
-              alt=""
-              className="gif-caption__gif"
-            />
-            <form className="gif-caption__form" onSubmit={this.handleSubmit}>
-              <input
-                type="text"
-                name="caption"
-                value={caption}
-                onChange={this.handleChange}
-                className="gif-caption__caption"
-              />
-              <button
-                type="submit"
-                disabled={isInvalid}
-                className="gif-caption__submit"
-              >
-                Submit
-              </button>
+          <div className="main-gif-wrapper">
+            <div className="main-gif-wrapper">
+              <div className="gif-container">
+                <img
+                  src={`https://media1.giphy.com/media/${gifId}/giphy.gif`}
+                  alt=""
+                  className="gif-caption__gif"
+                />
+              </div>
+            </div>
+
+            <form className="form" onSubmit={this.handleSubmit}>
+              <div className="label">
+                <label htmlFor="caption">Write Caption:</label>
+              </div>
+              <div className="textarea">
+                <textarea
+                  rows="2"
+                  type="text"
+                  name="caption"
+                  value={caption}
+                  onChange={this.handleChange}
+                />
+              </div>
+              <div className="btn-div">
+                <button
+                  className="btn-submit"
+                  type="submit"
+                  disabled={isInvalid}
+                >
+                  Submit
+                </button>
+              </div>
             </form>
           </div>
         )}

@@ -1,23 +1,98 @@
-.gif-caption {
-  background: #2a2a2a;
-  color: #fff;
-  padding: 2rem;
+.main-gif-container {
+  width: 400px;
+  margin: auto;
+  position: relative;
 }
 
-.gif-caption__gif {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 100%;
+.main-gif-wrapper {
+  margin-top: 30px;
 }
 
-.gif-caption__form {
-  margin: 1rem auto 0;
+.form {
+  margin-top: 20px;
+}
+
+/* .gif-container {
+  margin: auto;
+  margin-top: 40px;
+  width: 400px;
+  height: 400px;
+  border: solid 1px #3d0707;
+  border-radius: 4px;
+} */
+
+.gif-container {
+  display: flex;
+  justify-content: center;
+}
+
+.gif-container img {
+  border: solid 1px #3d0707;
+  border-radius: 4px;
+  margin: auto;
+}
+
+.btn {
+  position: absolute;
+  margin-top: 6px;
+  right: 0;
+}
+
+.btn:hover {
+  background-color: #18055a !important;
+}
+
+/*sidebar*/
+
+.sidebar {
+  list-style: none;
+  max-width: 400px;
+  border-left: #3d0707 solid 1px;
+  padding: 10px;
+}
+
+.sidebar li img {
+  width: 100px;
+}
+
+/*main-page div*/
+
+.main-page {
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 
-.gif-caption__caption {
-  width: 75%;
+/*forms*/
+
+textarea {
+  padding: 7px 15px;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  border: 1px solid #e9ebeb;
+  border-bottom: 1px solid #e1e3e3;
+  border-radius: 4px;
+  background-color: rgb(248, 244, 244);
+  color: rgba(14, 30, 37, .87);
+  box-shadow: 0 2px 4px 0 rgba(14, 30, 37, .12);
+  transition: all .2s ease;
+  transition-property: background-color, color, border, box-shadow;
+  outline: 0;
+  margin-bottom: 3px;
+  width: 90% !important;
+}
+
+.btn-submit {
+  width: 94%;
+}
+
+.btn-div {
+  width: 100%;
+}
+
+.vote-counter {
+  margin-left: 30px;
+  font-style: italic;
+  color: #18055a;
 }
