@@ -72,7 +72,7 @@ export default class GifCaption extends Component {
 
             <form className="form" onSubmit={this.handleSubmit}>
               <div className="label">
-                <label htmlFor="caption">Write Caption:</label>
+                <label htmlFor="caption">Write a caption for this gif:</label>
               </div>
               <div className="textarea">
                 <textarea

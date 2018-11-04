@@ -3,7 +3,9 @@
   justify-content: flex-start;
   align-items: center;
   margin-bottom: 2rem;
+  padding-bottom: 2rem;
   width: 100%;
+  border-bottom: 1px solid black;
 }
 
 .gif-item .icon {
