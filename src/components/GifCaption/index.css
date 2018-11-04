@@ -5,7 +5,8 @@
 }
 
 .main-gif-wrapper {
-  margin-top: 30px;
+  /* margin-top: 30px; */
+  /* position: relative; */
 }
 
 .form {
@@ -81,6 +82,12 @@ textarea {
 
 .btn-div {
   width: 100%;
+}
+
+.next-btn {
+  margin: auto;
+  width: 10%;
+  margin-top: 10px;
 }
 
 .vote-counter {
