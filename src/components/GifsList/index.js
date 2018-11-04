@@ -32,13 +32,25 @@ export default class GifsList extends Component {
     console.log(upvotedGifs);
     return (
       <div className="gifs-list">
+        <h2
+          style={{
+            fontFamily: "Lora",
+            marginLeft: "8px",
+            borderBottom: "solid 1px #444"
+          }}
+        >
+          {" "}
+          Most Voted Gifs
+        </h2>
         {this.state.gifs &&
           this.state.gifs.map(gif => (
-            <GifItem
-              key={gif.ts}
-              gif={gif}
-              upvoted={upvotedGifs.includes(gif.data.gifId)}
-            />
+            <div key={gif.ts}>
+              <GifItem
+                gif={gif}
+                upvoted={upvotedGifs.includes(gif.data.gifId)}
+              />
+              <hr />
+            </div>
           ))}
       </div>
     );

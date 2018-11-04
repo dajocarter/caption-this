@@ -54,7 +54,9 @@ export default class GifItem extends Component {
           src={`https://media1.giphy.com/media/${gif.data.gifId}/giphy.gif`}
           alt=""
         />
-        <h2>{gif.data.caption}</h2>
+        <h3 style={{ fontFamily: "Lora", marginLeft: "8px" }}>
+          {gif.data.caption}
+        </h3>
       </div>
     );
   }
