@@ -55,8 +55,12 @@ function createFaunaDB(key) {
     .then(() => {
       return client.query(
         q.Create(q.Ref("indexes"), {
-          name: "all_gifs",
-          source: q.Ref("classes/gifs")
+          name: "ordered_gifs",
+          source: q.Class("gifs"),
+          values: [
+            { field: ["data", "votes"], reverse: true },
+            { field: ["ref"] }
+          ]
         })
       );
     })

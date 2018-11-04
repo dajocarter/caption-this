@@ -8,14 +8,14 @@ const client = new faunadb.Client({
 exports.handler = (event, context, callback) => {
   console.log("Function `gif-read-all` invoked");
   return client
-    .query(q.Paginate(q.Match(q.Ref("indexes/all_gifs"))))
+    .query(q.Paginate(q.Match(q.Ref("indexes/ordered_gifs"))))
     .then(response => {
       const gifRefs = response.data;
       console.log("Gif refs", gifRefs);
       console.log(`${gifRefs.length} gifs found`);
       // create new query out of gif refs. http://bit.ly/2LG3MLg
-      const getAllGifDataQuery = gifRefs.map(ref => {
-        return q.Get(ref);
+      const getAllGifDataQuery = gifRefs.map(fields => {
+        return q.Get(fields[1]);
       });
       // then query the refs
       return client.query(getAllGifDataQuery).then(ret => {

@@ -11,14 +11,14 @@ exports.handler = (event, context, callback) => {
   console.log(`Function 'gif-update' invoked. update id: ${id}`);
   return client
     .query(
-      q.Let(
-        { gif: q.Get(q.Ref(`classes/gifs/${id}`)) },
-        q.Lambda(
-          q.Update(q.Ref(`classes/gifs/${id}`), {
-            data: { votes: q.Select(["data", "votes"], q.Var("gif")) + 1 }
-          })
-        )
-      )
+      q.Update(q.Ref(`classes/gifs/${id}`), {
+        data: {
+          votes: q.Add(
+            q.Select(["data", "votes"], q.Get(q.Ref(`classes/gifs/${id}`))),
+            1
+          )
+        }
+      })
     )
     .then(response => {
       console.log("success", response);
