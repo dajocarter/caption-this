@@ -21,8 +21,17 @@ const update = nodeId => {
   });
 };
 
+const deleteGif = gifId => {
+  return fetch(`/.netlify/functions/gifs-delete/${gifId}`, {
+    method: "POST"
+  }).then(response => {
+    return response.json();
+  });
+};
+
 export default {
   create: create,
   readAll: readAll,
-  update: update
+  update: update,
+  delete: deleteGif
 };
