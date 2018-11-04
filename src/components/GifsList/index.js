@@ -36,6 +36,7 @@ export default class GifsList extends Component {
           style={{
             fontFamily: "Lora",
             marginLeft: "8px",
+            marginBottom: "2rem",
             borderBottom: "solid 1px #444"
           }}
         >
@@ -49,7 +50,6 @@ export default class GifsList extends Component {
                 gif={gif}
                 upvoted={upvotedGifs.includes(gif.data.gifId)}
               />
-              <hr />
             </div>
           ))}
       </div>
