@@ -28,10 +28,18 @@ export default class GifsList extends Component {
     });
   }
   render() {
+    const upvotedGifs = JSON.parse(localStorage.getItem("upvoted_gifs")) || [];
+    console.log(upvotedGifs);
     return (
       <div className="gifs-list">
         {this.state.gifs &&
-          this.state.gifs.map(gif => <GifItem key={gif.ts} gif={gif} />)}
+          this.state.gifs.map(gif => (
+            <GifItem
+              key={gif.ts}
+              gif={gif}
+              upvoted={upvotedGifs.includes(gif.data.gifId)}
+            />
+          ))}
       </div>
     );
   }
