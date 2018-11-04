@@ -13,13 +13,14 @@ export default class GifItem extends Component {
 
   handleVote(e) {
     e.preventDefault();
-    const gifId = e.currentTarget.dataset.id;
-    api.update(gifId);
+    const nodeId = e.currentTarget.dataset.id;
+    const updated = api.update(nodeId);
+    console.log("UPDATED: ", updated);
   }
 
   extractId(gif) {
     const ref = gif.ref[`@ref`];
-    return ref.replace("classes/gifs/", "");
+    return ref.match(/([^\/]*)\/*$/)[0];
   }
 
   render() {

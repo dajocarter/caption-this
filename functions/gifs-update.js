@@ -7,11 +7,15 @@ const client = new faunadb.Client({
 });
 
 exports.handler = (event, context, callback) => {
-  const data = JSON.parse(event.body);
   const id = getId(event.path);
   console.log(`Function 'gif-update' invoked. update id: ${id}`);
   return client
-    .query(q.Update(q.Ref(`classes/gifs/${id}`), { data }))
+    .query(q.Let({ gif: q.Get(q.Ref(`classes/gifs/${id}`)) }, q.Var("gif")))
+    .then(response =>
+      q.Update(q.Ref(`classes/gifs/${id}`), {
+        data: { votes: response.data.gifId + 1 }
+      })
+    )
     .then(response => {
       console.log("success", response);
       return callback(null, {

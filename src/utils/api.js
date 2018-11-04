@@ -15,11 +15,8 @@ const readAll = () => {
   });
 };
 
-const update = (gifId, data) => {
-  return fetch(`/.netlify/functions/gifs-update/${gifId}`, {
-    body: JSON.stringify(data),
-    method: "POST"
-  }).then(response => {
+const update = nodeId => {
+  return fetch(`/.netlify/functions/gifs-update/${nodeId}`).then(response => {
     return response.json();
   });
 };
