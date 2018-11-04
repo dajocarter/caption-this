@@ -9,8 +9,10 @@ export default class App extends Component {
     return (
       <div className="app">
         <AppHeader />
-        <GifCaption />
-        <GifsList />
+        <div className="container">
+          <GifCaption />
+          <GifsList />
+        </div>
       </div>
     );
   }
