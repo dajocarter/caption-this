@@ -38,8 +38,7 @@ export default class GifCaption extends Component {
     const gifData = {
       gifId,
       caption,
-      votes: 1,
-      timestamp: new Date().getTime() * 10000
+      votes: 1
     };
     // Use API to save gif in database
     api
