@@ -49,8 +49,8 @@ export default class GifCaption extends Component {
       .catch(err => {
         console.log("An API error occurred", err);
       });
-    // Show a new gif
-    this.getRandomGif();
+    // Reload page
+    window.location.reload();
   }
 
   render() {
