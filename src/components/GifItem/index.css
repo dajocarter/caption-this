@@ -1,0 +1,23 @@
+.gif-item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.gif-item .icon {
+  cursor: pointer;
+  margin-right: 0.5rem;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.gif-item img {
+  height: auto;
+  width: 200px;
+}
+
+.gif-item h2 {
+  padding-left: 1rem;
+}

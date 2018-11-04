@@ -35,7 +35,12 @@ export default class GifCaption extends Component {
     e.preventDefault();
     // Form gif data
     const { gifId, caption } = this.state;
-    const gifData = { gifId, caption, timestamp: new Date().getTime() * 10000 };
+    const gifData = {
+      gifId,
+      caption,
+      votes: 1,
+      timestamp: new Date().getTime() * 10000
+    };
     // Use API to save gif in database
     api
       .create(gifData)

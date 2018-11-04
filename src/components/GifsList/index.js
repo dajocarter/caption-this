@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import api from "../../utils/api";
 import isLocalHost from "../../utils/isLocalHost";
 import GifItem from "../GifItem";
-
+import "./index.css";
 export default class GifsList extends Component {
   state = { gifs: [] };
 
@@ -29,7 +29,7 @@ export default class GifsList extends Component {
   }
   render() {
     return (
-      <div>
+      <div className="gifs-list">
         {this.state.gifs &&
           this.state.gifs.map(gif => <GifItem key={gif.ts} gif={gif} />)}
       </div>
