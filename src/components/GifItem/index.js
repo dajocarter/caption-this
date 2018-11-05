@@ -58,7 +58,9 @@ export default class GifItem extends Component {
         <h3 style={{ fontFamily: "Lora", marginLeft: "8px" }}>
           {gif.data.caption}
         </h3>
-        <p>Submitted by {gif.data.submittedBy || "Anonymous"}</p>
+        <p className="submitted-by">
+          Submitted by {gif.data.submittedBy || "Anonymous"}
+        </p>
         <Report gifId={this.extractId(gif)} />
       </div>
     );
