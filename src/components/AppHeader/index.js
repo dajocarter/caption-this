@@ -1,6 +1,7 @@
 import React from "react";
+import "./AppHeader.css";
 
-const AppHeader = props => {
+const AppHeader = () => {
   return (
     <header className="app-header">
       <div className="app-title-wrapper">
