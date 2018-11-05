@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "faunadb": "^0.2.2",
+    "netlify-identity-widget": "^1.4.14",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-icons": "^3.2.2",
