@@ -10,7 +10,7 @@ export default class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { faunadb_token: null, error: null };
+    this.state = { faunadb_token: null, error: null, user: {} };
   }
 
   onAuthChange(faunadb_token) {
@@ -24,6 +24,10 @@ export default class App extends Component {
     this.setState({ error });
   }
 
+  updateUser(user) {
+    this.setState({ user });
+  }
+
   render() {
     return (
       <div className="app">
@@ -31,9 +35,10 @@ export default class App extends Component {
         <Login
           onError={this.onError.bind(this)}
           onAuthChange={this.onAuthChange.bind(this)}
+          updateUser={this.updateUser.bind(this)}
         />
         <div className="container">
-          <GifCaption />
+          <GifCaption authedUser={this.state.user} />
           <GifsList />
         </div>
       </div>

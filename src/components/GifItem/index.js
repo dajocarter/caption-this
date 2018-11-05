@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
-import { FaArrowUp } from 'react-icons/fa';
-import api from '../../utils/api';
-import Report from '../Report';
-import './index.css';
+import React, { Component } from "react";
+import { FaArrowUp } from "react-icons/fa";
+import api from "../../utils/api";
+import Report from "../Report";
+import "./index.css";
 export default class GifItem extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       voted: this.props.upvoted,
-      votes: this.props.gif.data.votes,
+      votes: this.props.gif.data.votes
     };
 
     this.handleVote = this.handleVote.bind(this);
@@ -19,12 +19,12 @@ export default class GifItem extends Component {
     e.preventDefault();
     const nodeId = e.currentTarget.dataset.id;
     if (!this.state.voted) {
-      api.update(nodeId).then((response) => {
+      api.update(nodeId).then(response => {
         const upvotedGifs =
-          JSON.parse(localStorage.getItem('upvoted_gifs')) || [];
+          JSON.parse(localStorage.getItem("upvoted_gifs")) || [];
         if (!upvotedGifs.includes(response.data.gifId))
           upvotedGifs.push(response.data.gifId);
-        localStorage.setItem('upvoted_gifs', JSON.stringify(upvotedGifs));
+        localStorage.setItem("upvoted_gifs", JSON.stringify(upvotedGifs));
         this.setState({ voted: true, votes: response.data.votes });
       });
     }
@@ -55,9 +55,10 @@ export default class GifItem extends Component {
           src={`https://media1.giphy.com/media/${gif.data.gifId}/giphy.gif`}
           alt=""
         />
-        <h3 style={{ fontFamily: 'Lora', marginLeft: '8px' }}>
+        <h3 style={{ fontFamily: "Lora", marginLeft: "8px" }}>
           {gif.data.caption}
         </h3>
+        <p>Submitted by {gif.data.submittedBy || "Anonymous"}</p>
         <Report gifId={this.extractId(gif)} />
       </div>
     );

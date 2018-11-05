@@ -46,6 +46,7 @@ class Login extends Component {
         { user: JSON.parse(existingUser) },
         this.didLogin.bind(this, "noSave")
       );
+      this.props.updateUser(JSON.parse(existingUser));
     } else {
       existingUser = saveLogin(); // does calling user pop a thing? should we set state?
       if (existingUser) {
@@ -53,14 +54,17 @@ class Login extends Component {
           { user: existingUser },
           this.didLogin.bind(this, "noSave")
         );
+        this.props.updateUser(JSON.parse(existingUser));
       }
     }
-    netlifyIdentity.on("login", user =>
-      this.setState({ user }, this.didLogin.bind(this))
-    );
-    netlifyIdentity.on("logout", user =>
-      this.setState({ user: null }, this.didLogout.bind(this))
-    );
+    netlifyIdentity.on("login", user => {
+      this.setState({ user }, this.didLogin.bind(this));
+      this.props.updateUser(JSON.parse(user));
+    });
+    netlifyIdentity.on("logout", user => {
+      this.setState({ user: null }, this.didLogout.bind(this));
+      this.props.updateUser(JSON.parse(user));
+    });
   }
 
   didLogin(noSave) {
