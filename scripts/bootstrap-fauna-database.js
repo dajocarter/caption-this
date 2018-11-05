@@ -51,17 +51,43 @@ function createFaunaDB(key) {
 
   /* Based on your requirements, change the schema here */
   return client
-    .query(q.Create(q.Ref("classes"), { name: "gifs" }))
+    .query(q.CreateClass({ name: "users" }))
     .then(() => {
       return client.query(
-        q.Create(q.Ref("indexes"), {
-          name: "ordered_gifs",
-          source: q.Class("gifs"),
-          values: [
-            { field: ["data", "votes"], reverse: true },
-            { field: ["ref"] }
-          ]
-        })
+        q.Do(
+          q.CreateClass({
+            name: "gifs",
+            permissions: {
+              create: q.Class("users"),
+              update: q.Class("users")
+            }
+          })
+        )
+      );
+    })
+    .then(() => {
+      return client.query(
+        q.Do(
+          q.CreateIndex({
+            name: "users_by_id",
+            source: q.Class("users"),
+            terms: [
+              {
+                field: ["data", "id"]
+              }
+            ],
+            unique: true
+          }),
+          q.CreateIndex({
+            name: "ordered_gifs",
+            source: q.Class("gifs"),
+            values: [
+              { field: ["data", "votes"], reverse: true },
+              { field: ["ref"] }
+            ],
+            permissions: { read: q.Class("users") }
+          })
+        )
       );
     })
     .catch(e => {
