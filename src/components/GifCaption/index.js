@@ -41,11 +41,14 @@ export default class GifCaption extends Component {
     // Form gif data
     const { gifId, caption } = this.state;
     const { authedUser } = this.props;
+    let name = "Anonymous";
+    if (authedUser.user_metadata && authedUser.user_metadata.full_name)
+      name = authedUser.user_metadata.full_name;
     const gifData = {
       gifId,
       caption,
       votes: 1,
-      submittedBy: authedUser.user_metadata.full_name || "Anonymous"
+      submittedBy: name
     };
     // Use API to save gif in database
     api
